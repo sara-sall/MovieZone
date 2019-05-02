@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         //daniel
         //Tom stationär
 
+        // VÅRAN API NYCKEL: 844f26c4
+
         Movie movie = new Movie("Shawshank redemption", 1994, "Drama", 9.4,
                 "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtOD" +
                         "M1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg");
