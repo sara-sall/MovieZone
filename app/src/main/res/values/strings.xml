@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MovieZone</string>
+    <string name="welcome">WELCOME TO MOVIEZONE!</string>
+    <string name="welcome_text">PRESS THE BUTTON AND MOVIEZONE WILL CHOOSE A MOVIE CUSTOMIZED FOR YOU</string>
 </resources>
