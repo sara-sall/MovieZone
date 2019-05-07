@@ -18,8 +18,10 @@ public class QuestionsActivity extends AppCompatActivity {
     private Button buttonThree;
     private Button buttonFour;
 
-    String API_KEY = "&apikey=844f26c4";
-    String API_URL = "http://www.omdbapi.com/?t=";
+    //API:n kommer från the themoviedb.org (INTE OMDB)
+
+    String API_KEY = "d0532d41c9054bf65a4ec278b98fd6cf";
+    String API_URL = "https://api.themoviedb.org/3/movie/76341?api_key=";
 
     private int mQuestionNumber = 0;
     private QuestionLibrary questionsLibrary = new QuestionLibrary();
