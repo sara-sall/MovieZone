@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.17" />
 
-    <ImageView
+    <!--<ImageView
         android:visibility="gone"
         android:id="@+id/startButton"
         android:layout_width="254dp"
@@ -98,10 +98,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/start_button" />
+        app:srcCompat="@drawable/start_button" /> -->
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

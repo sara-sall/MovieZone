@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView startButton;
+    private Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
