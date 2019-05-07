@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
     <com.github.florent37.diagonallayout.DiagonalLayout
@@ -48,44 +49,38 @@
 
     <TextView
         android:id="@+id/textView3"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:fontFamily="@font/modak_regular"
-        android:text="@string/welcome"
-        android:textColor="#000"
-        android:textSize="30sp"
+        android:text="Welcome to"
+        android:textColor="@color/colorOnPrimary"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diagonalLayout" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="392dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:fontFamily="@font/modak_regular"
-        android:padding="6dp"
-        android:text="@string/welcome_text"
-        android:textColor="#000"
-        android:textSize="20sp"
+        android:padding="5dp"
+        android:shadowColor="@color/colorAccent"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="15"
+        android:text="MovieZone"
+        android:textColor="@color/colorOnPrimary"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/diagonalLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintVertical_bias="0.17" />
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/startButton"
         android:layout_width="254dp"
         android:layout_height="159dp"
@@ -104,5 +99,32 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/start_button" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button_shape"
+        android:fontFamily="@font/modak_regular"
+        android:text="Get a movie customized for you!"
+        android:textColor="#232323"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:shadowDy="0"
+        android:shadowDx="0"
+        android:shadowRadius="5"
+        android:shadowColor="@color/colorOnPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/diagonalLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.243" />
 
 </android.support.constraint.ConstraintLayout>
