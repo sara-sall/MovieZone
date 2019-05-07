@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".QuestionsActivity">
 
     <com.github.florent37.diagonallayout.DiagonalLayout
@@ -28,6 +29,7 @@
 
     <Button
         android:id="@+id/buttonOne"
+        android:background="@drawable/round_button_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -44,6 +46,7 @@
 
     <Button
         android:id="@+id/buttonTwo"
+        android:background="@drawable/round_button_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -60,6 +63,7 @@
 
     <Button
         android:id="@+id/buttonThree"
+        android:background="@drawable/round_button_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -76,6 +80,7 @@
 
     <Button
         android:id="@+id/buttonFour"
+        android:background="@drawable/round_button_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -102,7 +107,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/modak_regular"
         android:text="QUESTION CONTENT GOES HERE"
-        android:textColor="#000"
+        android:textColor="@color/colorOnPrimary"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonOne"
         app:layout_constraintEnd_toEndOf="parent"
