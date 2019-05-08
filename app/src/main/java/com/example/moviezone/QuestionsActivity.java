@@ -78,14 +78,15 @@ public class QuestionsActivity extends AppCompatActivity {
             Intent intent = new Intent(QuestionsActivity.this, ResultActivity.class);
             intent.putExtra("allAnswers", savedAnswers);
             startActivity(intent);
+        } else {
+
+            questionContent.setText(questionsLibrary.getQuestion(mQuestionNumber));
+            buttonOne.setText(questionsLibrary.getFirstChoice(mQuestionNumber));
+            buttonTwo.setText(questionsLibrary.getSecondChoice(mQuestionNumber));
+            buttonThree.setText(questionsLibrary.getThirdChoice(mQuestionNumber));
+            buttonFour.setText(questionsLibrary.getFourthChoice(mQuestionNumber));
+
+            mQuestionNumber++;
         }
-
-        questionContent.setText(questionsLibrary.getQuestion(mQuestionNumber));
-        buttonOne.setText(questionsLibrary.getFirstChoice(mQuestionNumber));
-        buttonTwo.setText(questionsLibrary.getSecondChoice(mQuestionNumber));
-        buttonThree.setText(questionsLibrary.getThirdChoice(mQuestionNumber));
-        buttonFour.setText(questionsLibrary.getFourthChoice(mQuestionNumber));
-
-        mQuestionNumber++;
     }
 }
