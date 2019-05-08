@@ -1,14 +1,17 @@
 package com.example.moviezone;
 
-public class QuestionLibrary {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.concurrent.ArrayBlockingQueue;
 
+public class QuestionLibrary {
     private String[] questionsArray = {"Average rating?",
                                         "release date?",
                                         "What genre do you want to see?"};
 
     private String[][] choices = {
             {"5","6","7","8"},
-            {"1980-01-01", "1990-01-01", "2000-01-01", "2010-01-01"},
+            {"1980-01-01" + " " + "1990-01-01", "1990-01-01" + " " + "1999-01-01", "2000-01-01" + " " + "2009-01-01", "2010-01-01" + " " + "2019-01-01"},
             {"28", "35", "18", "14"}
     };
 

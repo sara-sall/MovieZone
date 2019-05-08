@@ -3,11 +3,13 @@ package com.example.moviezone;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class QuestionsActivity extends AppCompatActivity {
 
@@ -77,9 +79,12 @@ public class QuestionsActivity extends AppCompatActivity {
         if(mQuestionNumber == 3){
             Intent intent = new Intent(QuestionsActivity.this, ResultActivity.class);
             intent.putExtra("allAnswers", savedAnswers);
+            Log.d("!!!!", "updateQuestion: " + savedAnswers);
             startActivity(intent);
+            return;
         }
 
+        Log.d("!!!!!", "updateQuestion: " + mQuestionNumber);
         questionContent.setText(questionsLibrary.getQuestion(mQuestionNumber));
         buttonOne.setText(questionsLibrary.getFirstChoice(mQuestionNumber));
         buttonTwo.setText(questionsLibrary.getSecondChoice(mQuestionNumber));
@@ -88,4 +93,5 @@ public class QuestionsActivity extends AppCompatActivity {
 
         mQuestionNumber++;
     }
+
 }
