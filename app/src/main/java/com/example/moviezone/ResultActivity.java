@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public class ResultActivity extends AppCompatActivity {
     private TextView arrayListTextView;
     private ImageView posterImage;
     private Button showButton;
+    private TextView titleTextView;
+    private TextView ratingTextView;
+
+
     private RequestQueue mQueue;
     Movie movie;
     ArrayList<Movie> movies = new ArrayList<>();
@@ -42,6 +47,8 @@ public class ResultActivity extends AppCompatActivity {
         arrayListTextView = findViewById(R.id.arrayListTextView);
         posterImage = findViewById(R.id.posterImage);
         showButton = findViewById(R.id.showButton);
+        titleTextView = findViewById(R.id.titleTextView);
+        ratingTextView = findViewById(R.id.ratingTextView);
 
         getIntent();
         ArrayList<String> allAnswers = (ArrayList<String>) getIntent().getSerializableExtra("allAnswers");
@@ -62,6 +69,8 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 movie =  movies.get(random.nextInt(19));
 
+                titleTextView.setText(movie.getTitle());
+                ratingTextView.setText(String.valueOf(movie.getRating()));
                 Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
             }
         });
