@@ -144,8 +144,10 @@ public class MovieListActivity extends AppCompatActivity {
                                     movieList.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
                                             film.getString("poster_path")));
 
-                                   Log.d("!!!", "2" + movieList.toString());
+                                   //Log.d("!!!", "2" + movieList.toString());
                                 }
+                                Log.d("!!!", "3" + movieList.toString());
+                                movieAdapter.notifyDataSetChanged();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -158,7 +160,12 @@ public class MovieListActivity extends AppCompatActivity {
             });
 
             volleyQueue.add(request);
-            Log.d("!!!", "3" + movieList.toString());
+            if(volleyQueue == null){
+                movieAdapter.notifyDataSetChanged();
+
+            }
+
+
         }
 
     }
