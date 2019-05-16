@@ -106,5 +106,6 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         mQueue.add(request);
+        Log.d("###", movies.toString());
     }
 }

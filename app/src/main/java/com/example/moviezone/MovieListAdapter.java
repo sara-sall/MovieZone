@@ -14,15 +14,10 @@ import java.util.List;
 public class MovieListAdapter extends RecyclerView.Adapter{
     private static List<Movie> movieList;
     private Context context;
-    private TextView movieTitle;
-    private TextView movieRating;
-    private ImageView movieImage;
-
-
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private TextView movieTitle;
+        public TextView movieTitle;
         private TextView movieRating;
         private ImageView movieImage;
 
@@ -66,8 +61,10 @@ public class MovieListAdapter extends RecyclerView.Adapter{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder vh, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        final MovieViewHolder vh = (MovieViewHolder) viewHolder;
         vh.movieTitle.setText(movieList.get(i).getTitle());
+
     }
 
     @Override

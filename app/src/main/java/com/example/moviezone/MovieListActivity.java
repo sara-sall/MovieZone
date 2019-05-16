@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -37,19 +38,8 @@ import java.util.ArrayList;
 
 public class MovieListActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
 
 
@@ -63,28 +53,18 @@ public class MovieListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabsLayoutID);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-
-
     }
 
-
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment extends Fragment {
         private ArrayList <Movie> movieList = new ArrayList<>();
         private RequestQueue volleyQueue;
@@ -92,19 +72,12 @@ public class MovieListActivity extends AppCompatActivity {
         private RecyclerView recyclerView;
         private RecyclerView.LayoutManager layoutManager;
         private MovieListAdapter movieAdapter;
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -118,30 +91,41 @@ public class MovieListActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_movie_list, container, false);
             volleyQueue = Volley.newRequestQueue(getContext());
+
+            LinearLayout fragmentLay = rootView.findViewById(R.id.movieItemLayout);
+
+            String query = "";
+
+            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
+                fragmentLay.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+
+                query = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
+                        "sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
+
+                jsonParse(query);
+
+            }
+            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
+                fragmentLay.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                query = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
+                        "sort_by=popularity.asc&include_adult=false&include_video=false&page=1";
+
+                jsonParse(query);
+
+            }
+
+
+            //Log.d("!!!", query);
+            Log.d("!!!", "1"+ movieList.toString());
+
+
             recyclerView = rootView.findViewById(R.id.recyclerID);
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
 
             movieAdapter = new MovieListAdapter(movieList);
             recyclerView.setAdapter(movieAdapter);
-            String query = "";
 
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
-
-                query = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
-                        "sort_by=popularity.desc&include_adult=false&include_video=false&page=1&";
-
-            }
-            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                query = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
-                        "sort_by=popularity.asc&include_adult=false&include_video=false&page=1&";
-
-            }
-
-            jsonParse(query);
-
-            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
 
@@ -160,7 +144,7 @@ public class MovieListActivity extends AppCompatActivity {
                                     movieList.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
                                             film.getString("poster_path")));
 
-                                    Log.d("###", movieList.toString());
+                                   Log.d("!!!", "2" + movieList.toString());
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -174,13 +158,11 @@ public class MovieListActivity extends AppCompatActivity {
             });
 
             volleyQueue.add(request);
+            Log.d("!!!", "3" + movieList.toString());
         }
+
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -196,7 +178,6 @@ public class MovieListActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 2;
         }
     }
