@@ -94,27 +94,21 @@ public class MovieListActivity extends AppCompatActivity {
 
             LinearLayout fragmentLay = rootView.findViewById(R.id.movieItemLayout);
 
-            String query = "";
 
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
                 fragmentLay.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-
-                query = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
+                String queryTop = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
                         "sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
-
-                jsonParse(query);
-
+                jsonParse(queryTop);
             }
-            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
+            if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
                 fragmentLay.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                query = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
+                String queryBot = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
                         "sort_by=popularity.asc&include_adult=false&include_video=false&page=1";
-
-                jsonParse(query);
-
+                jsonParse(queryBot);
             }
 
-
+            //jsonParse(query);
             //Log.d("!!!", query);
             Log.d("!!!", "1"+ movieList.toString());
 
@@ -130,6 +124,7 @@ public class MovieListActivity extends AppCompatActivity {
         }
 
         private void jsonParse(String url){
+            //movieList.clear();
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
