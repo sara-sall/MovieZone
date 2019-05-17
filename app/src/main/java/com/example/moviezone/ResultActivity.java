@@ -32,7 +32,7 @@ public class ResultActivity extends AppCompatActivity {
     private Button showButton;
     private TextView titleTextView;
     private TextView ratingTextView;
-
+    private TextView info;
 
     private RequestQueue mQueue;
     Movie movie;
@@ -49,6 +49,7 @@ public class ResultActivity extends AppCompatActivity {
         showButton = findViewById(R.id.showButton);
         titleTextView = findViewById(R.id.titleTextView);
         ratingTextView = findViewById(R.id.ratingTextView);
+        info = findViewById(R.id.info);
 
         getIntent();
         ArrayList<String> allAnswers = (ArrayList<String>) getIntent().getSerializableExtra("allAnswers");
@@ -63,19 +64,6 @@ public class ResultActivity extends AppCompatActivity {
                 "&vote_average.gte=" + allAnswers.get(0) + "&with_genres=" + allAnswers.get(2);
 
         jsonParse(url);
-
-        showButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonClick(view);
-         /*       movie =  movies.get(random.nextInt(19));
-
-                titleTextView.setText(movie.getTitle());
-                ratingTextView.setText(String.valueOf(movie.getRating()));
-                Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage); */
-            }
-        });
-
     }
 
     void buttonClick(View view) {
@@ -84,6 +72,7 @@ public class ResultActivity extends AppCompatActivity {
 
         titleTextView.setText(movie.getTitle());
         ratingTextView.setText(String.valueOf(movie.getRating()));
+        info.setText(movie.getOverview());
         Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
     }
 
@@ -101,7 +90,7 @@ public class ResultActivity extends AppCompatActivity {
 
 
                                 movies.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
-                                        film.getString("poster_path")));
+                                        film.getString("poster_path"),film.getString("overview")));
 
                                 Log.d("###", movies.toString());
                             }
