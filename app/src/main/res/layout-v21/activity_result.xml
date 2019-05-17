@@ -4,25 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ResultActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="378dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:fontFamily="@font/modak_regular"
-        android:text="@string/result_text"
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/arrayListTextView"
@@ -33,32 +17,31 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="584dp"
         android:fontFamily="@font/modak_regular"
         android:text="@string/arraylist"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.076" />
 
     <ImageView
         android:id="@+id/posterImage"
-        android:layout_width="303dp"
-        android:layout_height="175dp"
+        android:layout_width="253dp"
+        android:layout_height="375dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/showButton"
+        android:background="#fff"
+        android:padding="10dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/superman" />
+        app:layout_constraintTop_toBottomOf="@+id/arrayListTextView" />
 
     <Button
         android:id="@+id/showButton"
@@ -66,14 +49,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="496dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/new_movie"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/arrayListTextView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -81,15 +63,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="@font/modak_regular"
         android:text="@string/title"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/posterImage" />
 
@@ -102,12 +84,33 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="@font/modak_regular"
-        android:text="Rating"
-        android:textColor="#000"
+        android:text="@string/rating"
+        android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/modak_regular"
+        android:text="@string/info"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/showButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

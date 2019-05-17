@@ -67,15 +67,26 @@ public class ResultActivity extends AppCompatActivity {
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                movie =  movies.get(random.nextInt(19));
+                buttonClick(view);
+         /*       movie =  movies.get(random.nextInt(19));
 
                 titleTextView.setText(movie.getTitle());
                 ratingTextView.setText(String.valueOf(movie.getRating()));
-                Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
+                Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage); */
             }
         });
 
     }
+
+    void buttonClick(View view) {
+
+        movie =  movies.get(random.nextInt(19));
+
+        titleTextView.setText(movie.getTitle());
+        ratingTextView.setText(String.valueOf(movie.getRating()));
+        Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
+    }
+
 
     private void jsonParse(String url){
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -94,6 +105,8 @@ public class ResultActivity extends AppCompatActivity {
 
                                 Log.d("###", movies.toString());
                             }
+                            buttonClick(null);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
