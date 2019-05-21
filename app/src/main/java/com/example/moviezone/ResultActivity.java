@@ -1,3 +1,4 @@
+
 package com.example.moviezone;
 
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,7 +34,9 @@ public class ResultActivity extends AppCompatActivity {
     private Button showButton;
     private TextView titleTextView;
     private TextView ratingTextView;
+    private TextView info;
 
+    private Toolbar toolbar;
 
     private RequestQueue mQueue;
     Movie movie;
@@ -44,38 +48,50 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        arrayListTextView = findViewById(R.id.arrayListTextView);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        this.setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+       // arrayListTextView = findViewById(R.id.arrayListTextView);
         posterImage = findViewById(R.id.posterImage);
         showButton = findViewById(R.id.showButton);
         titleTextView = findViewById(R.id.titleTextView);
         ratingTextView = findViewById(R.id.ratingTextView);
+        info = findViewById(R.id.info);
 
-        getIntent();
-        ArrayList<String> allAnswers = (ArrayList<String>) getIntent().getSerializableExtra("allAnswers");
-        Log.d("!!!", allAnswers.toString());
-        arrayListTextView.setText(allAnswers.toString());
+        Bundle b = getIntent().getExtras();
 
-        mQueue = Volley.newRequestQueue(this);
+        if(b.getSerializable("allAnswers")!= null){
+            ArrayList<String> allAnswers = (ArrayList<String>) getIntent().getSerializableExtra("allAnswers");
+            Log.d("!!!", allAnswers.toString());
+           // arrayListTextView.setText(allAnswers.toString());
 
-        String url = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
-                "sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" +
-                "primary_release_date.gte=" + allAnswers.get(1) +
-                "&vote_average.gte=" + allAnswers.get(0) + "&with_genres=" + allAnswers.get(2);
+            mQueue = Volley.newRequestQueue(this);
 
-        jsonParse(url);
+            String url = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
+                    "sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" +
+                    "primary_release_date.gte=" + allAnswers.get(1) +
+                    "&vote_average.gte=" + allAnswers.get(0) + "&with_genres=" + allAnswers.get(2);
 
-        showButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                movie =  movies.get(random.nextInt(19));
+            jsonParse(url);
+        }
 
-                titleTextView.setText(movie.getTitle());
-                ratingTextView.setText(String.valueOf(movie.getRating()));
-                Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
-            }
-        });
+       // getIntent();
 
     }
+
+    void buttonClick(View view) {
+
+        movie =  movies.get(random.nextInt(19));
+
+        titleTextView.setText(movie.getTitle());
+        ratingTextView.setText(String.valueOf(movie.getRating()));
+        info.setText(movie.getOverview());
+        Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
+    }
+
 
     private void jsonParse(String url){
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -90,10 +106,12 @@ public class ResultActivity extends AppCompatActivity {
 
 
                                 movies.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
-                                        film.getString("poster_path"), film.getString("overview")));
+                                        film.getString("poster_path"),film.getString("overview")));
 
                                 Log.d("###", movies.toString());
                             }
+                            buttonClick(null);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -106,6 +124,5 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         mQueue.add(request);
-        Log.d("###", movies.toString());
     }
 }

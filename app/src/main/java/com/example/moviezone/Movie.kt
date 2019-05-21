@@ -1,6 +1,6 @@
 package com.example.moviezone
 
-data class Movie(val title: String, val year: String, var rating: Double, val poster: String, val info: String)
+data class Movie(val title: String, val year: String, var rating: Double, val poster: String, val overview: String)
 
 
 //Kotlin har automatiskt byggt in getters och setters
