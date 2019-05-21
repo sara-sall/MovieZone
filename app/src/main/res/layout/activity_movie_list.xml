@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="?attr/colorPrimaryDark">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,6 +24,20 @@
             android:background="?attr/colorPrimaryDark"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:fontFamily="@font/modak_regular"
+                android:shadowColor="@color/colorAccent"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="15"
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:textColor="@color/colorOnPrimary"
+                android:id="@+id/toolbar_title" />
 
         </android.support.v7.widget.Toolbar>
 

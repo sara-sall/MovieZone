@@ -7,22 +7,52 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ResultActivity">
 
+
+    <android.support.design.widget.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/appbar_padding_top"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    android:background="?attr/colorPrimaryDark"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"
+    app:elevation="0dp"
+        >
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/colorPrimaryDark"
-        app:titleTextColor="@color/colorOnPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        android:background="?attr/colorPrimaryDark"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:fontFamily="@font/modak_regular"
+            android:shadowColor="@color/colorAccent"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="15"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorOnPrimary"
+            android:id="@+id/toolbar_title" />
 
     </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+
+
 
     <ScrollView
         android:layout_marginTop="?actionBarSize"
@@ -38,18 +68,20 @@
             <ImageView
                 android:id="@+id/posterImage"
                 android:layout_width="wrap_content"
+                android:minWidth="255dp"
                 android:layout_height="375dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/image_shadow_rect"
                 android:contentDescription="@string/todo"
                 android:elevation="10dp"
+                android:background="@drawable/image_shadow_rect"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/logo_round"/>
 
             <Button
                 android:id="@+id/showButton"
@@ -59,8 +91,11 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginBottom="20dp"
                 android:padding="10dp"
+                android:textSize="20dp"
                 android:text="@string/new_movie"
+                android:fontFamily="@font/modak_regular"
                 android:background="@drawable/round_button_shape"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

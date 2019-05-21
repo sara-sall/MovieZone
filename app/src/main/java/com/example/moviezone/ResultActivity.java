@@ -56,6 +56,7 @@ public class ResultActivity extends AppCompatActivity {
         this.setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
        // arrayListTextView = findViewById(R.id.arrayListTextView);
         posterImage = findViewById(R.id.posterImage);
