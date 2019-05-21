@@ -1,6 +1,7 @@
 package com.example.moviezone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -39,6 +40,12 @@ public class MovieListAdapter extends RecyclerView.Adapter{
             final Movie movie = movieList.get(position);
 
             if(v.getId() == R.id.movieListItem){
+                Intent intent = new Intent(v.getContext(), ResultActivity.class);
+                intent.putExtra("title", movie.getTitle());
+                intent.putExtra("rating", movie.getRating());
+                intent.putExtra("poster", movie.getPoster());
+                intent.putExtra("overview", movie.getOverview());
+                v.getContext().startActivity(intent);
 
             }
 

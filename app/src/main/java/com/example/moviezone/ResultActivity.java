@@ -1,6 +1,7 @@
 
 package com.example.moviezone;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,8 @@ public class ResultActivity extends AppCompatActivity {
     private TextView titleTextView;
     private TextView ratingTextView;
     private TextView info;
+
+    private Boolean toStart;
 
     private Toolbar toolbar;
 
@@ -76,21 +79,52 @@ public class ResultActivity extends AppCompatActivity {
                     "&vote_average.gte=" + allAnswers.get(0) + "&with_genres=" + allAnswers.get(2);
 
             jsonParse(url);
+
+            showButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    movie =  movies.get(random.nextInt(19));
+
+                    titleTextView.setText(movie.getTitle());
+                    ratingTextView.setText(String.valueOf(movie.getRating()));
+                    info.setText(movie.getOverview());
+                    if(movie.getPoster() != "null"){
+                        Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
+                    }
+
+                }
+            });
+            toStart = true;
+
+        }else{
+            titleTextView.setText(b.getString("title"));
+            ratingTextView.setText(String.valueOf(b.getDouble("rating")));
+            info.setText(b.getString("overview"));
+
+            String postImage = b.getString("poster");
+
+            if(postImage != "null"){
+                Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+postImage).into(posterImage);
+            }
+            showButton.setVisibility(View.INVISIBLE);
+
+            toStart = false;
         }
 
-       // getIntent();
+
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+
+        if(toStart){
+            startActivity(new Intent(ResultActivity.this, MainActivity.class));
+        }else{
+            onBackPressed();
+        }
+        return true;
 
     }
 
-    void buttonClick(View view) {
-
-        movie =  movies.get(random.nextInt(19));
-
-        titleTextView.setText(movie.getTitle());
-        ratingTextView.setText(String.valueOf(movie.getRating()));
-        info.setText(movie.getOverview());
-        Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
-    }
 
 
     private void jsonParse(String url){
@@ -110,7 +144,7 @@ public class ResultActivity extends AppCompatActivity {
 
                                 Log.d("###", movies.toString());
                             }
-                            buttonClick(null);
+                            showButton.callOnClick();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
