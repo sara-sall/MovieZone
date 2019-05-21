@@ -90,7 +90,7 @@ public class ResultActivity extends AppCompatActivity {
 
 
                                 movies.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
-                                        film.getString("poster_path")));
+                                        film.getString("poster_path"), film.getString("overview")));
 
                                 Log.d("###", movies.toString());
                             }

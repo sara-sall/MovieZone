@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MovieListAdapter extends RecyclerView.Adapter{
@@ -29,18 +31,16 @@ public class MovieListAdapter extends RecyclerView.Adapter{
             movieRating = itemView.findViewById(R.id.movieListRating);
             movieTitle = itemView.findViewById(R.id.movieListTitle);
 
-
-
         }
 
         @Override
         public void onClick(View v) {
-           int position = getAdapterPosition();
-           final Movie movie = movieList.get(position);
+            int position = getAdapterPosition();
+            final Movie movie = movieList.get(position);
 
-           if(v.getId() == R.id.movieListItem){
+            if(v.getId() == R.id.movieListItem){
 
-           }
+            }
 
         }
 
@@ -64,7 +64,11 @@ public class MovieListAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         final MovieViewHolder vh = (MovieViewHolder) viewHolder;
         vh.movieTitle.setText(movieList.get(i).getTitle());
+        vh.movieRating.setText(String.valueOf(movieList.get(i).getRating()));
 
+        if(movieList.get(i).getPoster() != "null"){
+           Glide.with(context).load("https://image.tmdb.org/t/p/original"+movieList.get(i).getPoster()).into(vh.movieImage);
+        }
     }
 
     @Override

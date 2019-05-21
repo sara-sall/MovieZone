@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MovieListAdapterT extends RecyclerView.Adapter{
@@ -62,6 +64,12 @@ public class MovieListAdapterT extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         final MovieViewHolder vh = (MovieViewHolder) viewHolder;
         vh.movieTitle.setText(movieList.get(i).getTitle());
+        vh.movieRating.setText(String.valueOf(movieList.get(i).getRating()));
+
+        if(movieList.get(i).getPoster() != "null"){
+            Glide.with(context).load("https://image.tmdb.org/t/p/original"+movieList.get(i).getPoster()).into(vh.movieImage);
+        }
+
 
     }
 

@@ -6,7 +6,8 @@
     android:id="@+id/movieItemLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieListActivity$PlaceholderFragment">
+    tools:context=".MovieListActivity$PlaceholderFragment"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerID"

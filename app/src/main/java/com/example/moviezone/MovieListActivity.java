@@ -95,7 +95,6 @@ public class MovieListActivity extends AppCompatActivity {
 
 
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
-                fragmentLay.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                 String queryTop = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
                         "sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
                 jsonParse(queryTop, 1);
@@ -103,7 +102,6 @@ public class MovieListActivity extends AppCompatActivity {
                 recyclerView.setAdapter(movieAdapterT);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                fragmentLay.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 String queryBot = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
                         "sort_by=popularity.asc&include_adult=false&include_video=false&page=1";
                 jsonParse(queryBot, 2);
@@ -129,11 +127,11 @@ public class MovieListActivity extends AppCompatActivity {
                                     JSONObject film = jsonArray.getJSONObject(i);
                                     if(control == 1){
                                         movieListT.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
-                                                film.getString("poster_path")));
+                                                film.getString("poster_path"), film.getString("overview")));
                                     }
                                     if(control == 2){
                                         movieListB.add(new Movie(film.getString("title"), film.getString("release_date"), film.getDouble("vote_average"),
-                                                film.getString("poster_path")));
+                                                film.getString("poster_path"),film.getString("overview")));
                                     }
 
                                 }
