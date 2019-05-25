@@ -105,7 +105,7 @@ public class ResultActivity extends AppCompatActivity {
 
             String postImage = b.getString("poster");
 
-            if(postImage != "null"){
+            if(!postImage.equals("null")){
                 Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+postImage).into(posterImage);
             }
             showButton.setVisibility(View.INVISIBLE);
