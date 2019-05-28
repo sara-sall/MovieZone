@@ -11,6 +11,7 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
+    private Button movieListButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startButton = findViewById(R.id.startButton);
+        movieListButton = findViewById(R.id.startButton2);
 
         //Toms kommentar
         //joakim
@@ -38,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
+               startActivity(intent);
+           }
+       });
+
+       movieListButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent (MainActivity.this, MovieListActivity.class);
                startActivity(intent);
            }
        });
