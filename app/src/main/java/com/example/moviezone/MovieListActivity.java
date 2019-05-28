@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -80,6 +81,8 @@ public class MovieListActivity extends AppCompatActivity {
         private MovieListAdapterT movieAdapterT;
         private MovieListAdapter movieAdapterB;
 
+        private ProgressBar progressBar;
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -103,6 +106,7 @@ public class MovieListActivity extends AppCompatActivity {
             recyclerView = rootView.findViewById(R.id.recyclerID);
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
+            progressBar = rootView.findViewById(R.id.progressbar);
 
 
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
@@ -126,12 +130,15 @@ public class MovieListActivity extends AppCompatActivity {
         }
 
         private void jsonParse(String url, int i){
+            progressBar.setVisibility(View.VISIBLE);
             final int control = i;
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+
                             try {
+
                                 JSONArray jsonArray = response.getJSONArray("results");
 
                                 for (int i = 0; i < jsonArray.length(); i++){
@@ -155,6 +162,7 @@ public class MovieListActivity extends AppCompatActivity {
 
                                 Log.d("!!!", "3T" + movieListT.toString());
                                 Log.d("!!!", "3B" + movieListB.toString());
+                                progressBar.setVisibility(View.GONE);
 
 
                             } catch (JSONException e) {
@@ -169,6 +177,7 @@ public class MovieListActivity extends AppCompatActivity {
             });
 
             volleyQueue.add(request);
+
         }
 
     }
