@@ -42,6 +42,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+
     private RequestQueue mQueue;
     Movie movie;
     ArrayList<Movie> movies = new ArrayList<>();
@@ -74,6 +75,7 @@ public class ResultActivity extends AppCompatActivity {
            // arrayListTextView.setText(allAnswers.toString());
 
             mQueue = Volley.newRequestQueue(this);
+
 
             String url = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
                     "sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" +
@@ -113,7 +115,10 @@ public class ResultActivity extends AppCompatActivity {
             toStart = false;
         }
 
-
+        titleTextView.setText(movie.getTitle());
+        ratingTextView.setText(String.valueOf(movie.getRating()));
+        info.setText(movie.getOverview());
+        Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
     }
 
     @Override
