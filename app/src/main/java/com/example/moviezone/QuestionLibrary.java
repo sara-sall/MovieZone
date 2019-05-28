@@ -7,9 +7,9 @@ public class QuestionLibrary {
                                         "What genre do you want to see?"};
 
     private String[][] choices = {
-            {"5","6","7","8"},
-            {"1980-01-01", "1990-01-01", "2000-01-01", "2010-01-01"},
-            {"28", "35", "18", "14"}
+            {"5/10","6/10","7/10","8/10"},
+            {"1980", "1990", "2000", "2010"},
+            {"Action", "Comedy", "Drama", "Fantasy"}
     };
 
     public String getQuestion (int i){
