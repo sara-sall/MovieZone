@@ -27,6 +27,8 @@ public class QuestionsActivity extends AppCompatActivity {
     private QuestionLibrary questionsLibrary = new QuestionLibrary();
     private ArrayList<String> savedAnswers = new ArrayList<>();
 
+    private Viewers viewerResults = new Viewers();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,7 @@ public class QuestionsActivity extends AppCompatActivity {
         if(mQuestionNumber == 3){
             Intent intent = new Intent(QuestionsActivity.this, ResultActivity.class);
             intent.putExtra("allAnswers", savedAnswers);
+
             startActivity(intent);
         } else {
 
@@ -85,6 +88,8 @@ public class QuestionsActivity extends AppCompatActivity {
             buttonTwo.setText(questionsLibrary.getSecondChoice(mQuestionNumber));
             buttonThree.setText(questionsLibrary.getThirdChoice(mQuestionNumber));
             buttonFour.setText(questionsLibrary.getFourthChoice(mQuestionNumber));
+
+
 
             mQuestionNumber++;
         }
