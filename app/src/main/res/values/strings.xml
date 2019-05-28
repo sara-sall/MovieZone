@@ -3,10 +3,16 @@
     <string name="welcome">WELCOME TO MOVIEZONE!</string>
     <string name="welcome_text">PRESS THE BUTTON AND MOVIEZONE WILL CHOOSE A MOVIE CUSTOMIZED FOR YOU</string>
     <string name="result_text">You want a movie thats fits the following requirements: </string>
+
+    <string name="title_activity_movie_list">MovieListActivity</string>
+    <string name="tab_text_1">Top Movies</string>
+    <string name="tab_text_2">Bottom Movies</string>
+
     <string name="new_movie">new movie</string>
     <string name="arraylist">arraylist</string>
     <string name="title">Title</string>
     <string name="rating">Rating</string>
     <string name="todo">TODO</string>
     <string name="info">info</string>
+
 </resources>
