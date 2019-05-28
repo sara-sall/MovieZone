@@ -115,10 +115,6 @@ public class ResultActivity extends AppCompatActivity {
             toStart = false;
         }
 
-        titleTextView.setText(movie.getTitle());
-        ratingTextView.setText(String.valueOf(movie.getRating()));
-        info.setText(movie.getOverview());
-        Glide.with(ResultActivity.this).load("https://image.tmdb.org/t/p/original"+movie.getPoster()).into(posterImage);
     }
 
     @Override
