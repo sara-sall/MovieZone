@@ -88,10 +88,10 @@ public class ResultActivity extends AppCompatActivity {
 
             mQueue = Volley.newRequestQueue(this);
 
-            String url = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
+            /*String url = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
                     "sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" +
                     "primary_release_date.gte=" + allAnswers.get(1) +
-                    "&vote_average.gte=" + allAnswers.get(0) + "&with_genres=" + allAnswers.get(2);
+                    "&vote_average.gte=" + allAnswers.get(0) + "&with_genres=" + allAnswers.get(2); */
 
             jsonParse(url);
 
