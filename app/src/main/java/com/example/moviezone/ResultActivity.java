@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
@@ -48,6 +49,8 @@ public class ResultActivity extends AppCompatActivity {
     ArrayList<Movie> movies = new ArrayList<>();
     Random random = new Random();
 
+    private ProgressBar progressBar;
+
     private Viewers viewerResults = new Viewers();
 
     @Override
@@ -62,7 +65,8 @@ public class ResultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
-       // arrayListTextView = findViewById(R.id.arrayListTextView);
+        progressBar = findViewById(R.id.progressbar);
+
         posterImage = findViewById(R.id.posterImage);
         showButton = findViewById(R.id.showButton);
         titleTextView = findViewById(R.id.titleTextView);
@@ -74,7 +78,7 @@ public class ResultActivity extends AppCompatActivity {
         if(b.getSerializable("allAnswers")!= null){
             ArrayList<String> allAnswers = (ArrayList<String>) getIntent().getSerializableExtra("allAnswers");
             Log.d("!!!", allAnswers.toString());
-           // arrayListTextView.setText(allAnswers.toString());
+
 
 
         viewerResults.setRating(allAnswers.get(0));
@@ -155,6 +159,8 @@ public class ResultActivity extends AppCompatActivity {
 
 
     private void jsonParse(String url){
+        progressBar.setVisibility(View.VISIBLE);
+        showButton.setVisibility(View.INVISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -172,6 +178,8 @@ public class ResultActivity extends AppCompatActivity {
                                 Log.d("###", movies.toString());
                             }
                             showButton.callOnClick();
+                            progressBar.setVisibility(View.GONE);
+                            showButton.setVisibility(View.VISIBLE);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
