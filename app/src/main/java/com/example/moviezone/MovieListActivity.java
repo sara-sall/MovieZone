@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -39,6 +40,7 @@ public class MovieListActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private Toolbar toolbar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class MovieListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+
 
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -80,6 +83,8 @@ public class MovieListActivity extends AppCompatActivity {
         private MovieListAdapterT movieAdapterT;
         private MovieListAdapter movieAdapterB;
 
+        private ProgressBar progressBar;
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -104,6 +109,8 @@ public class MovieListActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
 
+            progressBar = rootView.findViewById(R.id.progressbar);
+
 
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
                 String queryTop = "https://api.themoviedb.org/3/discover/movie?api_key=d0532d41c9054bf65a4ec278b98fd6cf&language=en-US&" +
@@ -126,6 +133,7 @@ public class MovieListActivity extends AppCompatActivity {
         }
 
         private void jsonParse(String url, int i){
+            progressBar.setVisibility(View.VISIBLE);
             final int control = i;
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
@@ -155,6 +163,7 @@ public class MovieListActivity extends AppCompatActivity {
 
                                 Log.d("!!!", "3T" + movieListT.toString());
                                 Log.d("!!!", "3B" + movieListB.toString());
+                                progressBar.setVisibility(View.GONE);
 
 
                             } catch (JSONException e) {
