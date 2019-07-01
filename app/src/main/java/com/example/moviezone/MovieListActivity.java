@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -104,7 +105,7 @@ public class MovieListActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_movie_list, container, false);
             volleyQueue = Volley.newRequestQueue(getContext());
 
-            LinearLayout fragmentLay = rootView.findViewById(R.id.movieItemLayout);
+            RelativeLayout fragmentLay = rootView.findViewById(R.id.movieItemLayout);
             recyclerView = rootView.findViewById(R.id.recyclerID);
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
